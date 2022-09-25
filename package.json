@@ -4,7 +4,8 @@
   "description": "Node and MongoDB CRUD API for simple E-Commerce product APP.",
   "main": "index.js",
   "scripts": {
-    "serve": "nodemon index.js"
+    "serve": "nodemon index.js",
+    "lint": "eslint \"**/*.js\" --fix --ignore-pattern node_modules/"
   },
   "repository": {
     "type": "git",
