@@ -1,0 +1,25 @@
+{
+  "name": "node-crud-api",
+  "version": "1.0.0",
+  "description": "Node and MongoDB CRUD API for simple E-Commerce product APP.",
+  "main": "index.js",
+  "scripts": {
+    "serve": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RitobrotoMukherjee/node-mongo-crud.git"
+  },
+  "keywords": [
+    "Node",
+    "MongoDB",
+    "CRUD",
+    "API"
+  ],
+  "author": "Ritobroto Mukherjee",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RitobrotoMukherjee/node-mongo-crud/issues"
+  },
+  "homepage": "https://github.com/RitobrotoMukherjee/node-mongo-crud#readme"
+}
