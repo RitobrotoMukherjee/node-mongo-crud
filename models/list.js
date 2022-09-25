@@ -2,11 +2,12 @@ const dbConnection = require('../mongodb');
 
 const COLLECTION = 'products';
 
-const data = async () => {
+const data = async (query) => {
     const db = await dbConnection();
     const products = db.collection(COLLECTION);
-
-    return products.find().toArray();
+    const { name } = query;
+    if(name) query.name = new RegExp(name, 'i');
+    return products.find(query).toArray();
 }
 
 module.exports = data;
