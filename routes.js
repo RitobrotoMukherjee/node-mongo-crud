@@ -2,6 +2,7 @@ const { app, express } = require('./server');
 const read = require('./CRUD/read');
 const create = require('./CRUD/create');
 const UPDATE = require('./CRUD/update');
+const { deleteO, deleteM } = require('./CRUD/delete');
 
 app.use(express.json());
 
@@ -31,8 +32,26 @@ app.put('/:name', async (req, res) => {
     const { name } = req.params;
     const { acknowledged, modifiedCount } = await UPDATE( req.body, name );
     if(acknowledged && modifiedCount) res.status(200).send('Data Updated');
-    else if(acknowledged && !modifiedCount) res.status(200).send('No data has bee Updated');
+    else if(acknowledged && !modifiedCount) res.status(200).send('No data has been Updated');
     else res.status(400).send('Error');
+});
+
+app.delete('/:id', async (req, resp) => {
+    resp.setHeader('Content-Type', 'application/text');
+    const { id } = req.params;
+    const { acknowledged, deletedCount } = await deleteO(id)
+    if(acknowledged && deletedCount) resp.status(200).send('Data Deleted');
+    else if(acknowledged && !deletedCount) resp.status(200).send('0 data has been Deleted');
+    else resp.status(400).send('Error');
+});
+
+app.delete('/many/:name', async (req, resp) => {
+    resp.setHeader('Content-Type', 'application/text');
+    const { name } = req.params;
+    const { acknowledged, deletedCount } = await deleteM(name)
+    if(acknowledged && deletedCount) resp.status(200).send(`${deletedCount} Data Deleted`);
+    else if(acknowledged && !deletedCount) resp.status(200).send('0 data has been Deleted');
+    else resp.status(400).send('Error');
 });
 
 module.exports = app;
