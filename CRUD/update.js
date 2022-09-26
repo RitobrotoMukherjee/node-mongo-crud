@@ -2,10 +2,9 @@ const dbConnect = require('../mongodb');
 
 const COLLECTION = 'products';
 
-module.exports = async (data, many = false) => {
+module.exports = async (data, name, many = false) => {
     const db = await dbConnect();
     const update = db.collection(COLLECTION);
-    const { name } = data;
     if(many) {
         return update.updateMany( 
             { name }, 

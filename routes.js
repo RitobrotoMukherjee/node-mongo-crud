@@ -26,9 +26,10 @@ app.post('/', (req, res) => {
     }).catch((error) => res.status(400).send(error))
 });
 
-app.put('/', async (req, res) => {
+app.put('/:name', async (req, res) => {
     res.setHeader('Content-Type', 'application/text');
-    const { acknowledged, modifiedCount } = await UPDATE( req.body );
+    const { name } = req.params;
+    const { acknowledged, modifiedCount } = await UPDATE( req.body, name );
     if(acknowledged && modifiedCount) res.status(200).send('Data Updated');
     else if(acknowledged && !modifiedCount) res.status(200).send('No data has bee Updated');
     else res.status(400).send('Error');
