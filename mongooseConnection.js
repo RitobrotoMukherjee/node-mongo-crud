@@ -8,4 +8,4 @@ const connection = async () => {
     return mongoose.connect(`${URL}/${DB}`);
 }
 
-module.exports = { connection, mongoose };
+module.exports = { connection, DB, URL };
