@@ -25,4 +25,10 @@ const getProductWithSearch = async (params) => {
     })
 }
 
-module.exports = { getAllProducts, getProductWithSearch };
+const addProduct = async (params) => {
+    await connection();
+    const data = new ProductModel({ ...params });
+    return data.save();
+}
+
+module.exports = { getAllProducts, getProductWithSearch, addProduct };

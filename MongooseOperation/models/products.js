@@ -16,12 +16,22 @@ const ProductSchema = new Schema({
     type: {
         type: String,
         required: true,
-        match: /^[a-z ]+$/g
+        validate: {
+            validator: function(v) {
+                return /^[a-z ]+$/g.test(v);
+            },
+            message: props => `${props.value} Only string and space is allowed`
+        }
     },
     quantity: {
         type: Number,
-        required: true,
-        match: [/\d+/g, 'Only integers are allowed']
+        required: [true, "Quantity is required"],
+        validate: {
+            validator: function(v) {
+                return /\d+/g.test(v);
+            },
+            message: props => `${props.value} is not a valid quantity!`
+        }
     }
 });
 
