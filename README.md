@@ -31,6 +31,10 @@ To get a local copy up and running follow these simple example steps.
 - Node
 - npm
 
+- **Get Your Data From**
+  - [MongoDB Data](https://github.com/RitobrotoMukherjee/just-mongo-db);
+  - Please check all the branch and get the data insert commands from the respective `.md` file.
+
 ## Authors
 
 👤 **Author**
