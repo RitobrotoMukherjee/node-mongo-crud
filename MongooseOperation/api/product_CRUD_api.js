@@ -1,5 +1,6 @@
 const ProductModel = require('../models/products');
 const { connection } = require('../../mongooseConnection');
+const mongoose = require('mongoose');
 
 const getAllProducts = async () => {
     await connection();
@@ -31,4 +32,15 @@ const addProduct = async (params) => {
     return data.save();
 }
 
-module.exports = { getAllProducts, getProductWithSearch, addProduct };
+const deleteManyProducts = async (name) => {
+    await connection();
+    return ProductModel.deleteMany({ name });
+}
+
+const deleteById = async (id) => {
+    await connection();
+    const _id = mongoose.Types.ObjectId(id);
+    return ProductModel.deleteOne({ _id });
+}
+
+module.exports = { getAllProducts, getProductWithSearch, addProduct, deleteManyProducts, deleteById };
