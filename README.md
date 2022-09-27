@@ -21,6 +21,9 @@
 - **To run `MongoDB` server: `npm run serve`**
 - **To run `MongoDB` with `Mongoose` : `npm run mongooseserve`**
 
+## To Run `schema_basics` of `Mongoose`
+- **`node schema_basics.js`**
+
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
