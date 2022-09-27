@@ -18,7 +18,8 @@
 - **`git clone https://github.com/RitobrotoMukherjee/node-mongo-crud.git`**
 - **`cd node-mongo-crud`**
 - **`npm i`**
-- **`npm run serve`**
+- **To run `MongoDB` server: `npm run serve`**
+- **To run `MongoDB` with `Mongoose` : `npm run mongooseserve`**
 
 To get a local copy up and running follow these simple example steps.
 

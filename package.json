@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "serve": "nodemon index.js",
+    "mongooseserve": "nodemon indexm.js",
     "lint": "eslint \"**/*.js\" --fix --ignore-pattern node_modules/"
   },
   "repository": {

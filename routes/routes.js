@@ -1,8 +1,8 @@
-const { app, express } = require('./server');
-const read = require('./MongoDB_CRUD/read');
-const create = require('./MongoDB_CRUD/create');
-const UPDATE = require('./MongoDB_CRUD/update');
-const { deleteO, deleteM } = require('./MongoDB_CRUD/delete');
+const { app, express } = require('../server');
+const read = require('../MongoDB_CRUD/read');
+const create = require('../MongoDB_CRUD/create');
+const UPDATE = require('../MongoDB_CRUD/update');
+const { deleteO, deleteM } = require('../MongoDB_CRUD/delete');
 
 app.use(express.json());
 
