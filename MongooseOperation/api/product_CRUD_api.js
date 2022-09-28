@@ -15,11 +15,16 @@ const getAllProducts = async () => {
 const getProductWithSearch = async (params) => {
     await connection();
     const { name, type } = params;
-    if(name) params.name = new RegExp(`.*${name}.*`, 'i');
-    if(type) params.type = new RegExp(`.*${type}.*`, 'i');
 
     return new Promise((resolve, reject) => {
-        ProductModel.find({ ...params }, 'name type price quantity', (error, products) => {
+        ProductModel.find({ $or: [
+            { 
+                "name": { $regex: new RegExp(`.*${name}.*`, 'i') } ,
+            },
+            {
+                "type": type
+            }
+        ]}, 'name type price quantity', (error, products) => {
             if(error) reject(error);
             resolve(products);
         });
