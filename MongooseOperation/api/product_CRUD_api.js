@@ -29,15 +29,17 @@ const getProductWithSearch = async (params) => {
 const addProduct = async (params) => {
     await connection();
     const data = new ProductModel({ ...params });
-    return data.save();
+    const errors = data.validateSync();
+    if(errors) return Promise.reject(errors);
+    return Promise.resolve(data.save());
 }
 
 const updateProduct = async (id, data) => {
     await connection();
     const _id = mongoose.Types.ObjectId(id);
     return ProductModel.updateOne({ _id }, {
-        ...data
-    });
+        $set: { ...data }
+    }, { runValidators: true });
 }
 
 const deleteManyProducts = async (name) => {

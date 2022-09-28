@@ -20,7 +20,7 @@ const ProductSchema = new Schema({
             validator: function(v) {
                 return /^[a-z ]+$/g.test(v);
             },
-            message: props => `${props.value} Only string and space is allowed`
+            message: props => `For 'type' Only lower case characters and space is allowed, sent: '${props.value}'`
         }
     },
     quantity: {
@@ -28,7 +28,7 @@ const ProductSchema = new Schema({
         required: [true, "Quantity is required"],
         validate: {
             validator: function(v) {
-                return /\d+/g.test(v);
+                return /^[\d]*$/g.test(v);
             },
             message: props => `${props.value} is not a valid quantity!`
         }

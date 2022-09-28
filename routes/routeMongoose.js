@@ -26,8 +26,7 @@ app.post('/add', (req, resp) => {
     resp.setHeader('Content-Type', 'application/json');
     const params = req.body;
     addProduct(params).then((product) => {
-        resp.setHeader('Content-Type', 'application/text');
-        resp.send(`Successfully added ${product.name}`);
+        resp.status(200).send({success: true, message: `Successfully added ${product.name}`});
     }).catch(e => resp.status(500).send(e));
 });
 
@@ -43,12 +42,12 @@ app.put('/update/:_id', (req, resp) => {
         } else if(acknowledged && !modifiedCount) {
             resp.status(200).send({ ...successObject, message: `matched: ${matchedCount}, modified: ${modifiedCount}` });
         } else {
-            resp.status(400).send({ error: true, message: "Unknown error"});
+            resp.status(500).send({ error: true, message: "Unknown error"});
         }
         
     })
     .catch((err) => {
-        resp.status(500).send({
+        resp.status(400).send({
             error: true, message: "Contact Team", details: err
         }); 
     });
