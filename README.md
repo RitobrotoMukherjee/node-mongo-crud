@@ -1,8 +1,8 @@
 ![](https://img.shields.io/badge/Ritobroto-Mukherjee-blueviolet?labelColor=yellow)
 
-# Simple API - Node + MongoDB
+# Simple API - Node + Mongoose To file Upload
 
-> Created a simple API using Node js, Express JS and MongoDB. MySQL CRUD API is also available in separate branch.
+> Created a simple API using Node js, Express JS and MongoDB to upload a file
 
 
 ## Built With
@@ -10,16 +10,15 @@
 - Node JS
 - Express JS
 - Mongo DB
-- MySQL
 
 
 ## Getting Started
 
 - **`git clone https://github.com/RitobrotoMukherjee/node-mongo-crud.git`**
 - **`cd node-mongo-crud`**
+- **`git checkout file-upload`**
 - **`npm i`**
-- **To run `MongoDB` server: `npm run serve`**
-- **To run `MongoDB` with `Mongoose` : `npm run mongooseserve`**
+- **`npm run serve`**
 
 ## To Run `schema_basics` of `Mongoose`
 - **`node schema_basics.js`**
