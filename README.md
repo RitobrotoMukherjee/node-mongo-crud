@@ -3,6 +3,7 @@
 # Simple API - Node + MongoDB
 
 > Created a simple API using Node js, Express JS and MongoDB. MySQL CRUD API is also available in separate branch.
+> - **File Upload API is in `file-upload` branch. That brach is standalone and not been merged with `dev`**
 
 
 ## Built With
