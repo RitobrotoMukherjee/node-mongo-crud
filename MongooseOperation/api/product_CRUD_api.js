@@ -32,6 +32,14 @@ const addProduct = async (params) => {
     return data.save();
 }
 
+const updateProduct = async (id, data) => {
+    await connection();
+    const _id = mongoose.Types.ObjectId(id);
+    return ProductModel.updateOne({ _id }, {
+        ...data
+    });
+}
+
 const deleteManyProducts = async (name) => {
     await connection();
     return ProductModel.deleteMany({ name });
@@ -43,4 +51,4 @@ const deleteById = async (id) => {
     return ProductModel.deleteOne({ _id });
 }
 
-module.exports = { getAllProducts, getProductWithSearch, addProduct, deleteManyProducts, deleteById };
+module.exports = { getAllProducts, getProductWithSearch, addProduct, updateProduct, deleteManyProducts, deleteById };

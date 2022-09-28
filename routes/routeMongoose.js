@@ -1,5 +1,5 @@
 const { app, express } = require('../server');
-const { getAllProducts, getProductWithSearch, addProduct, deleteManyProducts, deleteById }
+const { getAllProducts, getProductWithSearch, addProduct, updateProduct, deleteManyProducts, deleteById }
     = require('../MongooseOperation/api/product_CRUD_api');
 
 app.use(express.json());
@@ -31,6 +31,29 @@ app.post('/add', (req, resp) => {
     }).catch(e => resp.status(500).send(e));
 });
 
+app.put('/update/:_id', (req, resp) => {
+    resp.setHeader('Content-Type', 'application/json');
+    const { _id } = req.params;
+    const successObject = { success: true, message: "Data Updated" };
+    updateProduct(_id, req.body)
+    .then((data) => {
+        const { acknowledged, modifiedCount, matchedCount } = data;
+        if(acknowledged && modifiedCount) {
+            resp.status(200).send({ ...successObject, message: `matched: ${matchedCount}, modified: ${modifiedCount}` });
+        } else if(acknowledged && !modifiedCount) {
+            resp.status(200).send({ ...successObject, message: `matched: ${matchedCount}, modified: ${modifiedCount}` });
+        } else {
+            resp.status(400).send({ error: true, message: "Unknown error"});
+        }
+        
+    })
+    .catch((err) => {
+        resp.status(500).send({
+            error: true, message: "Contact Team", details: err
+        }); 
+    });
+});
+
 app.delete('/delete/:name', (req, resp) => {
     resp.setHeader('Content-Type', 'application/text');
     const { name } = req.params;
@@ -59,6 +82,6 @@ app.delete('/delete-one/:id', async (req, resp) => {
     }catch (e) {
         resp.status(500).send(`Server Error while deleting ${id}`);
     }
-})
+});
 
 module.exports = app;
